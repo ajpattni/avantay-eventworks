@@ -12,199 +12,55 @@
         <p class="brand-lockup"><span class="brand-mark" aria-hidden="true"></span>Avantay EventWorks</p>
         <h1 id="loginTitle">Sign in</h1>
         <form id="loginForm" class="stack">
-          <label>
-            Username
-            <input value="owner" autocomplete="username" />
-          </label>
-          <label>
-            Password
-            <input type="password" value="demo" autocomplete="current-password" />
-          </label>
+          <label>Username<input value="owner" autocomplete="username" /></label>
+          <label>Password<input type="password" value="demo" autocomplete="current-password" /></label>
           <button class="primary-button" type="submit">Open bookings</button>
         </form>
       </section>
     </main>
-
     <main id="appView" class="app-shell hidden">
       <aside class="sidebar">
-        <div>
-          <p class="brand-lockup"><span class="brand-mark" aria-hidden="true"></span>Avantay EventWorks</p>
-          <h1>Bookings</h1>
-        </div>
+        <div><p class="brand-lockup"><span class="brand-mark" aria-hidden="true"></span>Avantay EventWorks</p><h1>Bookings</h1></div>
         <nav class="nav-list" aria-label="Main">
-          <button id="dashboardNav" class="nav-item active" type="button">
-            <span aria-hidden="true">[]</span>
-            Dashboard
-          </button>
-          <button id="calendarNav" class="nav-item" type="button">
-            <span aria-hidden="true">01</span>
-            Calendar
-          </button>
-          <button id="paymentsNav" class="nav-item" type="button">
-            <span aria-hidden="true">&pound;</span>
-            Payments
-          </button>
-          <button id="archiveNav" class="nav-item" type="button">
-            <span aria-hidden="true">=</span>
-            Archive
-          </button>
+          <button id="dashboardNav" class="nav-item active" type="button"><span aria-hidden="true">[]</span>Dashboard</button>
+          <button id="calendarNav" class="nav-item" type="button"><span aria-hidden="true">01</span>Calendar</button>
+          <button id="paymentsNav" class="nav-item" type="button"><span aria-hidden="true">&pound;</span>Payments</button>
+          <button id="archiveNav" class="nav-item" type="button"><span aria-hidden="true">=</span>Archive</button>
         </nav>
         <button id="logoutButton" class="ghost-button" type="button">Sign out</button>
       </aside>
-
       <section class="workspace">
         <section id="dashboardView">
           <header class="topbar">
-            <div>
-              <p class="eyebrow">Upcoming events</p>
-              <h2>At-a-glance venue diary</h2>
+            <div><p class="eyebrow">Upcoming events</p><h2>At-a-glance venue diary</h2></div>
+            <div class="topbar-actions">
+              <label class="upload-button" for="eventUploadInput">Upload event record</label>
+              <input id="eventUploadInput" class="file-input" type="file" accept=".xls,.xlsx,.csv" />
+              <button id="newEventButton" class="primary-button compact" type="button"><span aria-hidden="true">+</span>New event</button>
             </div>
-            <button id="newEventButton" class="primary-button compact" type="button">
-              <span aria-hidden="true">+</span>
-              New event
-            </button>
           </header>
-
           <section class="summary-grid" aria-label="Booking summary">
-            <article class="summary-card">
-              <span>Total upcoming</span>
-              <strong id="summaryUpcoming">0</strong>
-            </article>
-            <article class="summary-card warning">
-              <span>Awaiting deposit</span>
-              <strong id="summaryDeposit">0</strong>
-            </article>
-            <article class="summary-card danger">
-              <span>Balance due</span>
-              <strong id="summaryBalance">0</strong>
-            </article>
+            <article class="summary-card"><span>Total upcoming</span><strong id="summaryUpcoming">0</strong></article>
+            <article class="summary-card warning"><span>Awaiting deposit</span><strong id="summaryDeposit">0</strong></article>
+            <article class="summary-card danger"><span>Balance due</span><strong id="summaryBalance">0</strong></article>
           </section>
-
           <section class="filters" aria-label="Search and filters">
-            <label class="search-field">
-              <span>Search client</span>
-              <input id="searchInput" type="search" placeholder="Start typing a name" />
-            </label>
-            <label>
-              Status
-              <select id="statusFilter">
-                <option value="all">All statuses</option>
-                <option>Enquiry</option>
-                <option>Quote sent</option>
-                <option>Deposit paid</option>
-                <option>Confirmed</option>
-                <option>Completed</option>
-                <option>Cancelled</option>
-              </select>
-            </label>
-            <label>
-              Type
-              <select id="typeFilter">
-                <option value="all">All event types</option>
-              </select>
-            </label>
-            <label>
-              From
-              <input id="fromDate" type="date" />
-            </label>
-            <label>
-              To
-              <input id="toDate" type="date" />
-            </label>
+            <label class="search-field"><span>Search client</span><input id="searchInput" type="search" placeholder="Start typing a name" /></label>
+            <label>Status<select id="statusFilter"><option value="all">All statuses</option><option>Enquiry</option><option>Quote sent</option><option>Deposit paid</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option></select></label>
+            <label>Type<select id="typeFilter"><option value="all">All event types</option></select></label>
+            <label>From<input id="fromDate" type="date" /></label>
+            <label>To<input id="toDate" type="date" /></label>
           </section>
-
           <section id="eventList" class="event-list" aria-live="polite"></section>
         </section>
-
-        <section id="calendarView" class="hidden">
-          <header class="topbar calendar-topbar">
-            <div>
-              <p class="eyebrow">Calendar</p>
-              <h2 id="calendarTitle">Month view</h2>
-            </div>
-            <div class="calendar-controls" aria-label="Calendar controls">
-              <button id="prevMonthButton" class="ghost-button inline" type="button">Previous</button>
-              <button id="nextMonthButton" class="ghost-button inline" type="button">Next</button>
-            </div>
-          </header>
-
-          <div class="range-toggle" aria-label="Calendar range">
-            <button class="tab-button active" type="button" data-range="1">Month</button>
-            <button class="tab-button" type="button" data-range="3">3 months</button>
-            <button class="tab-button" type="button" data-range="6">6 months</button>
-            <button class="tab-button" type="button" data-range="12">12 months</button>
-          </div>
-
-          <section id="calendarContent" class="calendar-content" aria-live="polite"></section>
-        </section>
-
-        <section id="paymentsView" class="hidden">
-          <header class="topbar">
-            <div>
-              <p class="eyebrow">Payments</p>
-              <h2>Deposits and balances</h2>
-            </div>
-          </header>
-
-          <section class="summary-grid" aria-label="Payment summary">
-            <article class="summary-card danger">
-              <span>Overdue balances</span>
-              <strong id="summaryOverduePayments">0</strong>
-            </article>
-            <article class="summary-card warning">
-              <span>Awaiting deposits</span>
-              <strong id="summaryAwaitingDepositPayments">0</strong>
-            </article>
-            <article class="summary-card">
-              <span>Fully paid</span>
-              <strong id="summaryFullyPaidPayments">0</strong>
-            </article>
-          </section>
-
-          <section id="paymentsList" class="management-list" aria-live="polite"></section>
-        </section>
-
-        <section id="archiveView" class="hidden">
-          <header class="topbar">
-            <div>
-              <p class="eyebrow">Archive</p>
-              <h2>Completed and cancelled bookings</h2>
-            </div>
-          </header>
-
-          <section id="archiveList" class="management-list archive-list" aria-live="polite"></section>
-        </section>
+        <section id="calendarView" class="hidden"><header class="topbar calendar-topbar"><div><p class="eyebrow">Calendar</p><h2 id="calendarTitle">Month view</h2></div><div class="calendar-controls" aria-label="Calendar controls"><button id="prevMonthButton" class="ghost-button inline" type="button">Previous</button><button id="nextMonthButton" class="ghost-button inline" type="button">Next</button></div></header><div class="range-toggle" aria-label="Calendar range"><button class="tab-button active" type="button" data-range="1">Month</button><button class="tab-button" type="button" data-range="3">3 months</button><button class="tab-button" type="button" data-range="6">6 months</button><button class="tab-button" type="button" data-range="12">12 months</button></div><section id="calendarContent" class="calendar-content" aria-live="polite"></section></section>
+        <section id="paymentsView" class="hidden"><header class="topbar"><div><p class="eyebrow">Payments</p><h2>Deposits and balances</h2></div></header><section class="summary-grid" aria-label="Payment summary"><article class="summary-card danger"><span>Overdue balances</span><strong id="summaryOverduePayments">0</strong></article><article class="summary-card warning"><span>Awaiting deposits</span><strong id="summaryAwaitingDepositPayments">0</strong></article><article class="summary-card"><span>Fully paid</span><strong id="summaryFullyPaidPayments">0</strong></article></section><section id="paymentsList" class="management-list" aria-live="polite"></section></section>
+        <section id="archiveView" class="hidden"><header class="topbar"><div><p class="eyebrow">Archive</p><h2>Completed and cancelled bookings</h2></div></header><section id="archiveList" class="management-list archive-list" aria-live="polite"></section></section>
       </section>
-
-      <section id="detailPanel" class="detail-panel" aria-label="Event details">
-        <div class="panel-empty">
-          <p class="eyebrow">Select a booking</p>
-          <h2>Event details will appear here</h2>
-          <p>Open any booking to review client, setup, catering, staffing, bar, payment, and notes in one place.</p>
-        </div>
-      </section>
+      <section id="detailPanel" class="detail-panel" aria-label="Event details"><div class="panel-empty"><p class="eyebrow">Select a booking</p><h2>Event details will appear here</h2><p>Open any booking to review client, setup, catering, staffing, bar, payment, and notes in one place.</p></div></section>
     </main>
-
-    <template id="detailTemplate">
-      <form id="eventForm" class="detail-form">
-        <div class="detail-header">
-          <div>
-            <p class="eyebrow">Event record</p>
-            <h2 data-field="title"></h2>
-          </div>
-          <button id="deleteEventButton" class="icon-button danger-outline" type="button" title="Delete event" aria-label="Delete event">x</button>
-        </div>
-
-        <div id="tabList" class="tabs" role="tablist"></div>
-        <div id="tabPanels"></div>
-
-        <div class="form-actions">
-          <button class="ghost-button" id="cancelEditButton" type="button">Cancel</button>
-          <button class="primary-button compact" type="submit">Save changes</button>
-        </div>
-      </form>
-    </template>
-
+    <template id="detailTemplate"><form id="eventForm" class="detail-form"><div class="detail-header"><div><p class="eyebrow">Event record</p><h2 data-field="title"></h2></div><button id="deleteEventButton" class="icon-button danger-outline" type="button" title="Delete event" aria-label="Delete event">x</button></div><div id="tabList" class="tabs" role="tablist"></div><div id="tabPanels"></div><div class="form-actions"><button class="ghost-button" id="cancelEditButton" type="button">Cancel</button><button class="primary-button compact" type="submit">Save changes</button></div></form></template>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
