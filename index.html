@@ -27,6 +27,7 @@
           <button id="calendarNav" class="nav-item" type="button"><span aria-hidden="true">01</span>Calendar</button>
           <button id="paymentsNav" class="nav-item" type="button"><span aria-hidden="true">&pound;</span>Payments</button>
           <button id="archiveNav" class="nav-item" type="button"><span aria-hidden="true">=</span>Archive</button>
+          <button id="uploadEventNav" class="nav-item" type="button"><span aria-hidden="true">↑</span>Upload Event</button>
         </nav>
         <button id="logoutButton" class="ghost-button" type="button">Sign out</button>
       </aside>
@@ -34,11 +35,7 @@
         <section id="dashboardView">
           <header class="topbar">
             <div><p class="eyebrow">Upcoming events</p><h2>At-a-glance venue diary</h2></div>
-            <div class="topbar-actions">
-              <label class="upload-button" for="eventUploadInput">Upload event record</label>
-              <input id="eventUploadInput" class="file-input" type="file" accept=".xls,.xlsx,.csv" />
-              <button id="newEventButton" class="primary-button compact" type="button"><span aria-hidden="true">+</span>New event</button>
-            </div>
+            <button id="newEventButton" class="primary-button compact" type="button"><span aria-hidden="true">+</span>New event</button>
           </header>
           <section class="summary-grid" aria-label="Booking summary"><article class="summary-card"><span>Total upcoming</span><strong id="summaryUpcoming">0</strong></article><article class="summary-card warning"><span>Awaiting deposit</span><strong id="summaryDeposit">0</strong></article><article class="summary-card danger"><span>Balance due</span><strong id="summaryBalance">0</strong></article></section>
           <section class="filters" aria-label="Search and filters"><label class="search-field"><span>Search client</span><input id="searchInput" type="search" placeholder="Start typing a name" /></label><label>Status<select id="statusFilter"><option value="all">All statuses</option><option>Enquiry</option><option>Quote sent</option><option>Deposit paid</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option></select></label><label>Type<select id="typeFilter"><option value="all">All event types</option></select></label><label>From<input id="fromDate" type="date" /></label><label>To<input id="toDate" type="date" /></label></section>
@@ -51,7 +48,9 @@
       <section id="detailPanel" class="detail-panel" aria-label="Event details"><div class="panel-empty"><p class="eyebrow">Select a booking</p><h2>Event details will appear here</h2><p>Open any booking to review client, setup, catering, staffing, bar, payment, and notes in one place.</p></div></section>
     </main>
     <template id="detailTemplate"><form id="eventForm" class="detail-form"><div class="detail-header"><div><p class="eyebrow">Event record</p><h2 data-field="title"></h2></div><button id="deleteEventButton" class="icon-button danger-outline" type="button" title="Delete event" aria-label="Delete event">x</button></div><div id="tabList" class="tabs" role="tablist"></div><div id="tabPanels"></div><div class="form-actions"><button class="ghost-button" id="cancelEditButton" type="button">Cancel</button><button class="primary-button compact" type="submit">Save changes</button></div></form></template>
+    <section id="uploadModal" class="modal-backdrop hidden" aria-labelledby="uploadModalTitle" aria-modal="true" role="dialog"><div class="modal-panel"><div class="detail-header"><div><p class="eyebrow">Upload Event</p><h2 id="uploadModalTitle">Import event record</h2></div><button id="closeUploadModalButton" class="icon-button danger-outline" type="button" title="Close upload" aria-label="Close upload">x</button></div><div class="upload-dropzone"><p>Upload an Avantay import template in XLS, XLSX, or CSV format.</p><label class="upload-button primary-upload" for="eventUploadInput">Choose file</label><input id="eventUploadInput" class="file-input" type="file" accept=".xls,.xlsx,.csv" /></div><div class="form-actions modal-actions"><button id="cancelUploadModalButton" class="ghost-button" type="button">Cancel</button></div></div></section>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="app.js"></script>
+    <script src="upload-modal.js"></script>
   </body>
 </html>
