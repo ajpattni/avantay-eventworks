@@ -7,12 +7,13 @@ Open `index.html` in a browser to try it. The demo sign-in is prefilled:
 - Username: `owner`
 - Password: `demo`
 
-The prototype uses browser local storage, so edits and new bookings stay on this machine until browser data is cleared.
+The prototype uses browser local storage, so edits and new bookings stay in that browser until browser data is cleared.
 
 ## Prototype Scope
 
 - Single-user sign-in screen
 - Dashboard with upcoming bookings
+- Upload event record from `.xls`, `.xlsx`, or `.csv`
 - Search by client name
 - Filters for status, event type, and date range
 - Summary counts for upcoming events, awaiting deposit, and balance due
@@ -23,6 +24,18 @@ The prototype uses browser local storage, so edits and new bookings stay on this
 - Payments page with deposit, balance, overdue, and completion actions
 - Archive page for completed and cancelled bookings
 - Delete confirmation for event records
+
+## Event Import Template
+
+Use `Avantay_EventWorks_Import_Template.csv` as the import template. The app also accepts Excel `.xls` and `.xlsx` files with the same column headings.
+
+Required columns:
+
+- `Client full name`
+- `Event type`
+- `Event date`
+
+The template includes optional fields for timings, guest count, setup, catering, bar, staffing, payment details, phone, email, and lead source.
 
 ## Notes For The Real Build
 
