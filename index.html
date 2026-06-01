@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avantay EventWorks Prototype</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="upload.css" />
   </head>
   <body>
     <main id="loginView" class="login-view">
@@ -39,18 +40,8 @@
               <button id="newEventButton" class="primary-button compact" type="button"><span aria-hidden="true">+</span>New event</button>
             </div>
           </header>
-          <section class="summary-grid" aria-label="Booking summary">
-            <article class="summary-card"><span>Total upcoming</span><strong id="summaryUpcoming">0</strong></article>
-            <article class="summary-card warning"><span>Awaiting deposit</span><strong id="summaryDeposit">0</strong></article>
-            <article class="summary-card danger"><span>Balance due</span><strong id="summaryBalance">0</strong></article>
-          </section>
-          <section class="filters" aria-label="Search and filters">
-            <label class="search-field"><span>Search client</span><input id="searchInput" type="search" placeholder="Start typing a name" /></label>
-            <label>Status<select id="statusFilter"><option value="all">All statuses</option><option>Enquiry</option><option>Quote sent</option><option>Deposit paid</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option></select></label>
-            <label>Type<select id="typeFilter"><option value="all">All event types</option></select></label>
-            <label>From<input id="fromDate" type="date" /></label>
-            <label>To<input id="toDate" type="date" /></label>
-          </section>
+          <section class="summary-grid" aria-label="Booking summary"><article class="summary-card"><span>Total upcoming</span><strong id="summaryUpcoming">0</strong></article><article class="summary-card warning"><span>Awaiting deposit</span><strong id="summaryDeposit">0</strong></article><article class="summary-card danger"><span>Balance due</span><strong id="summaryBalance">0</strong></article></section>
+          <section class="filters" aria-label="Search and filters"><label class="search-field"><span>Search client</span><input id="searchInput" type="search" placeholder="Start typing a name" /></label><label>Status<select id="statusFilter"><option value="all">All statuses</option><option>Enquiry</option><option>Quote sent</option><option>Deposit paid</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option></select></label><label>Type<select id="typeFilter"><option value="all">All event types</option></select></label><label>From<input id="fromDate" type="date" /></label><label>To<input id="toDate" type="date" /></label></section>
           <section id="eventList" class="event-list" aria-live="polite"></section>
         </section>
         <section id="calendarView" class="hidden"><header class="topbar calendar-topbar"><div><p class="eyebrow">Calendar</p><h2 id="calendarTitle">Month view</h2></div><div class="calendar-controls" aria-label="Calendar controls"><button id="prevMonthButton" class="ghost-button inline" type="button">Previous</button><button id="nextMonthButton" class="ghost-button inline" type="button">Next</button></div></header><div class="range-toggle" aria-label="Calendar range"><button class="tab-button active" type="button" data-range="1">Month</button><button class="tab-button" type="button" data-range="3">3 months</button><button class="tab-button" type="button" data-range="6">6 months</button><button class="tab-button" type="button" data-range="12">12 months</button></div><section id="calendarContent" class="calendar-content" aria-live="polite"></section></section>
