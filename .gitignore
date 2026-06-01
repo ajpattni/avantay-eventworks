@@ -1,0 +1,7 @@
+.docx_extract_*/
+.DS_Store
+Thumbs.db
+node_modules/
+.netlify/
+publish/
+avantay-eventworks-site.zip
