@@ -17,12 +17,7 @@ function closeUploadModal() {
 uploadEventNav?.addEventListener("click", openUploadModal);
 closeUploadModalButton?.addEventListener("click", closeUploadModal);
 cancelUploadModalButton?.addEventListener("click", closeUploadModal);
-uploadInput?.addEventListener("change", () => {
-  window.setTimeout(() => {
-    if (uploadInput.files.length === 0) return;
-    closeUploadModal();
-  }, 0);
-});
+uploadInput?.addEventListener("change", () => window.setTimeout(closeUploadModal, 50));
 uploadModal?.addEventListener("click", (event) => {
   if (event.target === uploadModal) closeUploadModal();
 });
